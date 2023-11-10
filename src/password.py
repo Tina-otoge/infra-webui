@@ -14,10 +14,12 @@ def check_password(password, hashed_password):
 def check_token(token):
     for saved_token in config.secrets.get("tokens", []):
         saved_token = str(saved_token)
-        if saved_token == token:
-            return True
-        if check_password(token, saved_token):
-            return True
+        if saved_token[0] == "$":
+            if check_password(token, saved_token):
+                return True
+        else:
+            if token == saved_token:
+                return True
     return False
 
 
