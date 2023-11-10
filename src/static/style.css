@@ -1,0 +1,28 @@
+body {
+    margin: 0;
+    font-family: sans-serif;
+}
+
+.dashboard {
+    display: flex;
+}
+
+.dashboard .item {
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    min-width: 200px;
+}
+
+.dashboard .indicator .value {
+    font-weight: bold;
+}
+
+.dashboard .item[data-status=true] .indicator .value {
+    color: green;
+}
+
+.dashboard .item[data-status=false] .indicator .value {
+    color: red;
+}

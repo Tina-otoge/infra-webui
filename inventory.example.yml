@@ -1,0 +1,11 @@
+machine1:
+  type: ec2
+  params:
+    id: i-xxxxxxxxxxxxxxxxx
+    region: eu-west-1
+
+machine2:
+  type: ec2
+  params:
+    id: i-xxxxxxxxxxxxxxxxx
+    region: eu-west-1

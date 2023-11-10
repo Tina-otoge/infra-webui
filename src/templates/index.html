@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Infra Web UI</title>
+    <base href="/">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="data:image/x-icon;," type="image/x-icon">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+    <h1>Dashboard</h1>
+    <ul class="alerts">
+        {% for alert in get_flashed_messages() %}
+        <li class="alert">{{ alert }}</li>
+        {% endfor %}
+    </ul>
+    <form action="token" method="post">
+        <input type="password" name="token" placeholder="token">
+        <button type="submit">Set session token</button>
+    </form>
+
+    <div class="dashboard">
+        {% for name, item in inventory.items() %}
+        <div class="item" data-name="{{ name }}" data-status="">
+            <div>{{ name }}</div>
+            <p>{{ item.description }}</p>
+            <p class="indicator">
+                Status: <span class="value">{{ item.status }}</span>
+            </p>
+            <p class="extra"></p>
+            <button class="primary" data-action="start">Start</button>
+            <button class="danger" data-action="stop">Stop</button>
+        </div>
+        {% endfor %}
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+
+</html>
